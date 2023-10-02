@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         letter-spacing: .6px;
-        background-color: rgb(23, 23, 23)
+        background-color: rgb(23, 23, 23);
+        overflow: hidden;
     }
 `

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NBand, NCard, NHeader, NImg, NInfo, NTable, NTitle } from './styles'
-import { collection, getDocs, updateDoc , doc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import {db} from '../../firebase'
 
 const NotListened = () => {

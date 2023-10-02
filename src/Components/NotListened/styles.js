@@ -6,7 +6,7 @@ export const NTable = styled.div`
     margin: 0;
     flex-wrap: wrap;
 
-    max-height: 90vh;
+    max-height: 100vh;
     max-width: 1000px;
 
     gap: 50px;
