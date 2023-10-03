@@ -51,6 +51,8 @@ const NotListened = () => {
                 </NCard>
                 )
 
+            }else{
+                return null
             }
             
 
