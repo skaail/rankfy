@@ -7,9 +7,9 @@ export const NTable = styled.div`
     flex-wrap: wrap;
 
     max-height: 100vh;
-    max-width: 1000px;
+    max-width: 1200px;
 
-    gap: 50px;
+    gap: 15px;
 
     overflow: scroll;
 
@@ -28,6 +28,8 @@ export const NCard = styled.div`
     border-radius: 10px;
 
     background-color: rgb(40, 40, 40);
+
+    cursor: pointer;
 `
 
 export const NImg = styled.img`

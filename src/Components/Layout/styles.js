@@ -6,4 +6,5 @@ export const SLayout = styled.div`
 
 export const SMain = styled.main`
     padding: 20px;
+    width: 100%;
 `
