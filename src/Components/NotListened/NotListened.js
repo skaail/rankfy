@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { NBand, NCard, NHeader, NImg, NInfo, NTable, NTitle } from './styles'
-import { collection, getDocs } from "firebase/firestore";
-import {db} from '../../firebase'
+import { AModal, AModalBody, MButton, MClose, MInput, NBand, NCard, NHeader, NImg, NInfo, NTable, NTitle } from './styles'
+import { collection, getDocs, updateDoc , doc } from "firebase/firestore";import {db} from '../../firebase'
 
 const NotListened = () => {
     
     const [albuns, setAlbuns] = useState([])
+    const [show, setShow] = useState(false)
+    const [id, setId] = useState('')
+    const [nota, setNota] = useState()
 
     const fetchAlbuns = async () => {
         await getDocs(collection(db, "todos"))
@@ -16,6 +18,18 @@ const NotListened = () => {
             })
     }
 
+    const salvarNota = async (e) => {
+        const albumref = doc(db, "todos", id)
+        console.log(nota)
+
+        await updateDoc(albumref, {
+            nota: parseInt(nota)
+          });
+          setShow(false)
+          window.location.reload(false);
+
+    }
+
     useEffect(() => {
         fetchAlbuns()
     }, [])
@@ -24,17 +38,34 @@ const NotListened = () => {
         <>
         <NHeader>Não ouvidas</NHeader>
         <NTable>
-            {albuns.map(({name, band, logo}) => (
-            <NCard key={name}>
-                <NImg src={logo}/>
-                <NInfo>
-                    <NTitle>{name }</NTitle>
-                    <NBand>{band}</NBand>
-                </NInfo>
-            </NCard>
-            ))}
+            {albuns.map(({id, name, band, logo, nota}) => {
+            
+            if(nota === undefined){
+                return(
+                    <NCard key={id} onClick={() => {setShow(true); setId(id)}}>
+                    <NImg src={logo}/>
+                    <NInfo>
+                        <NTitle>{name}</NTitle>
+                        <NBand>{band}</NBand>
+                    </NInfo>
+                </NCard>
+                )
+
+            }
+            
+
+        })}
             
         </NTable>
+
+        <AModal show  = {show}>
+            <AModalBody show  = {show}>
+                <MClose onClick={() => setShow(false)}>X</MClose>
+                Digite a Nota:
+                <MInput onChange={(e) => {setNota(e.target.value)}} />
+                <MButton onClick={() => salvarNota()}>Salvar</MButton>
+            </AModalBody>
+        </AModal>
         </>
     )
 }

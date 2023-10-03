@@ -82,4 +82,43 @@ export const AModalBody = styled.div`
     border-radius: 30px;
     border: 3px #212124 solid;
     color: white;
+    flex-direction: column;
+    gap: 25px;
+`
+
+export const MInput = styled.input`
+
+    width: 30%;
+    height: 40px;
+    border: 0;
+    border-radius: 30px;
+    padding: 20px;
+    background-color: #2e2e2e;
+    color: white;
+
+`
+
+export const MButton = styled.a`
+    cursor: pointer;
+    background-color: white;
+    border-radius: 30px;
+    color: black;
+
+    width: 20%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+    
+`
+
+export const MClose = styled.a`
+    cursor: pointer;
+
+    position: fixed;
+    top: 30%;
+    right: 30%;
 `

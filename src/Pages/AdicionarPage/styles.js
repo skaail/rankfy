@@ -45,3 +45,29 @@ export const ATable = styled.div`
         display: none;
     }
 `
+
+export const AModal = styled.div`
+    z-index: auto;
+    display: ${({show}) => (show ? 'flex' : 'none')};
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgb(0 0 0 / 0%);
+ 
+    justify-content: center;
+    align-items: center;
+`
+
+export const AModalBody = styled.div`
+    width: 50%;
+    height: 50%;
+    background-color: rgb(14 14 14);
+    display: ${({show}) => (show ? 'flex' : 'none')};
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border: 3px #212124 solid;
+    color: white;
+`
