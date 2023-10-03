@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { AMain, APesquisa } from './styles'
-import { NBand, NCard, NImg, NInfo, NTable, NTitle } from '../../Components/NotListened/styles';
+import { AModal, AModalBody, NBand, NCard, NImg, NInfo, NTable, NTitle } from '../../Components/NotListened/styles';
 
 import { collection, addDoc } from "firebase/firestore";
 import {db} from '../../firebase';
@@ -14,6 +14,8 @@ const AdicionarPage = () => {
     const [searchInput, setSearchInput] = useState("")
     const [accessToken, setAccessToekn] = useState("")
     const [albums, setAlbums] = useState([])
+
+    const [show, setShow] = useState(false)
 
     useEffect(() => {
         //API Access Token
@@ -43,6 +45,7 @@ const AdicionarPage = () => {
             });
             console.log("Document written with ID: ", docRef.id)
             setSearchInput("")
+            setShow(true)
             setAlbums([])
           } catch (e) {
             console.error("Error adding document: ", e)
@@ -93,6 +96,12 @@ const AdicionarPage = () => {
             
         </NTable>
         </AMain>
+
+        <AModal onClick={() => setShow(false)} show  = {show}>
+            <AModalBody show  = {show}>
+                Música adicionada
+            </AModalBody>
+        </AModal>
         </>
 
     )
